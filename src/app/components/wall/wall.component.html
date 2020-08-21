@@ -1,4 +1,5 @@
 <div class="container">
-    <app-post [post]="posts[0]"></app-post>
-    <app-post [post]="posts[1]"></app-post>
+    <div class="post" *ngFor="let post of posts">
+        <app-post [post]="post"></app-post>
+    </div>
 </div>
