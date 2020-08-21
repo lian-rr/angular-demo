@@ -4,7 +4,6 @@
         <a href="#">
             <h5 class="card-title">{{post.title}}</h5>
         </a>
-        <!-- <p class="card-text">{{(post.body.length > 6)? (post.body | slice:0:30 + "..."): post.body}}</p> -->
         <p class="card-text">{{(post.body.length > 140)? post.body.slice(0,140) + "...": post.body}}</p>
     </div>
 </div>
