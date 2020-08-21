@@ -11,6 +11,9 @@ export class PostComponent implements OnInit {
   @Input()
   post: Post;
 
+  @Input()
+  showPreview: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void { }

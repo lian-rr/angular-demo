@@ -1,0 +1,22 @@
+<div class="accordion" id="comments">
+    <div *ngFor="let comment of comments">
+        <div class="card">
+            <div class="card-header" id="comment{{comment.id}}">
+                <h2 class="mb-0">
+                    <a class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                        attr.data-target="#collapse{{comment.id}}" aria-expanded="true"
+                        attr.aria-controls="collapse{{comment.id}}">
+                        {{comment.name}}
+                    </a>
+                </h2>
+            </div>
+            <div id="collapse{{comment.id}}" class="collapse" attr.aria-labelledby="heading{{comment.id}}"
+                data-parent="#comments">
+                <div class="card-body">
+                    {{comment.body}}
+                    <footer class="blockquote-footer">{{comment.email}}</footer>
+                </div>                
+            </div>            
+        </div>
+    </div>
+</div>
