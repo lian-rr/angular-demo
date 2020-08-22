@@ -10,6 +10,8 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { CommentsComponent } from './components/comments/comments.component';
 import { NewCommentComponent } from './components/new-comment/new-comment.component';
 
+import { BackendService } from './services/backend.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,7 @@ import { NewCommentComponent } from './components/new-comment/new-comment.compon
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
