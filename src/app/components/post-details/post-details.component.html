@@ -3,6 +3,10 @@
         <div class="col-md-8">
             <h1 class="card-title">{{post.title}}</h1>
             <p class="card-text">{{post.body}}</p>
+
+            <h3>New Comment</h3>
+            <app-new-comment (newCommentEvent)="addNewComment($event)"></app-new-comment>
+
             <h3>Comments</h3>
             <ul class="list-group">
                 <app-comments [comments]="post.comments"></app-comments>
