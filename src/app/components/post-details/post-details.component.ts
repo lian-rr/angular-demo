@@ -14,7 +14,7 @@ import { BackendService } from 'src/app/services/backend.service';
 })
 export class PostDetailsComponent implements OnInit {
 
-  post: PostDetails;
+  post: PostDetails = new PostDetails();
 
   posts: Post[];
 
@@ -24,15 +24,33 @@ export class PostDetailsComponent implements OnInit {
   ) { }
 
   addNewComment(newComment: NewComment): void {
-    this.post.comments.push(this.backend.postComment(newComment, this.post.id));
+    this.backend.postComment(newComment, this.post.id).subscribe((comment) => {
+      this.post.comments.push({...comment});
+    });
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      let postId = params['postId'] as number;
 
-      this.post = this.backend.getPostDetails(params['postId'] as number);
+      this.backend.getPostDetails(postId).subscribe((post) => {
+        this.post = post;
+        this.post.comments = [];
 
-      this.posts = this.backend.getPostsByAuthor(this.post.authorId);
+        this.backend.getPostsByAuthor(post.userId).subscribe((posts) => {
+          this.posts = posts;
+        }, (error) => {
+          console.error(`Error getting other posts by same author. Error: ${error.message}`);
+        });
+      }, (error) => {
+        console.error(`Error getting the post details for post with id: ${postId}. ${error.message}`);
+      });
+
+      this.backend.getCommentsByPostId(postId).subscribe((comments) => {
+        this.post.comments = comments;
+      }, (error) => {
+        console.error(`Error getting the comments for post with id: ${postId}. ${error.message}`);
+      });
     });
   }
 

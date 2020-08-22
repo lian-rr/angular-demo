@@ -14,7 +14,13 @@ export class WallComponent implements OnInit {
   constructor(private backend: BackendService) { }
 
   ngOnInit(): void {
-    this.posts = this.backend.getAllPosts();
+    this.backend.getAllPosts().subscribe((posts: Post[]) => {
+      this.posts = posts;
+    },
+    (error) => {
+      console.error(`Error retrieving posts: ${error.message}`);
+      
+    });
   }
 
 }
