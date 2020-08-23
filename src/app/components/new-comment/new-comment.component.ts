@@ -30,8 +30,7 @@ export class NewCommentComponent implements OnInit {
       email: this.newCommentForm.value.email,
       title: this.newCommentForm.value.title,
       message: this.newCommentForm.value.message
-
-    })
+    });
     this.newCommentForm.reset();
   }
 

@@ -12,6 +12,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { NewCommentComponent } from './components/new-comment/new-comment.component';
 
 import { BackendService } from './services/backend.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BackendService } from './services/backend.service';
     PostComponent,
     PostDetailsComponent,
     CommentsComponent,
-    NewCommentComponent
+    NewCommentComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
